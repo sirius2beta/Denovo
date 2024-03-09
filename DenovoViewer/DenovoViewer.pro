@@ -4,9 +4,33 @@ QT += quick gui widgets
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+QT_CONFIG -= no-pkg-config
+CONFIG += link_pkgconfig debug
+PKGCONFIG = \
+    gstreamer-1.0 \
+    gstreamer-video-1.0
+
+DEFINES += GST_USE_UNSTABLE_API
+
+DEFINES += DNAPI_QML
 SOURCES += \
+    dnapi/dnqmlglobal.cpp \
+    dnapi/qmlobjectlistmodel.cpp \
         dnapplication.cpp \
-        main.cpp
+        main.cpp\
+        dnapi/boatitem.cpp \
+        dnapi/boatmanager.cpp \
+        dnapi/configmanager.cpp \
+        dnapi/dnmetadata.cpp \
+        dnapi/dnvalue.cpp \
+        dnapi/sensoritem.cpp \
+        dnapi/sensormanager.cpp \
+        dnapi/dnvideomanager.cpp \
+        dnapi/gpbcore.cpp \
+        dnapi/heartbeat.cpp \
+        dnapi/networkmanager.cpp \
+        dnapi/videoitem_qml.cpp \
+        dnapi/device.cpp \
 
 RESOURCES += qml.qrc
 
@@ -21,5 +45,24 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+INCLUDEPATH += \
+    dnapi
+
 HEADERS += \
-    dnapplication.h
+    dnapi/dnqmlglobal.h \
+    dnapi/qmlobjectlistmodel.h \
+    dnapplication.h\
+    dnapi/boatitem.h \
+    dnapi/boatmanager.h \
+    dnapi/configmanager.h \
+    dnapi/dnmetadata.h \
+    dnapi/dnvalue.h \
+    dnapi/sensoritem.h \
+    dnapi/sensormanager.h \
+    dnapi/dnvideomanager.h \
+    dnapi/gpbcore.h \
+    dnapi/heartbeat.h \
+    dnapi/networkmanager.h \
+    dnapi/videoitem_qml.h \
+    dnapi/device.h \
+    dnapi/QTypes.h
