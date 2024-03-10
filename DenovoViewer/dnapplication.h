@@ -3,7 +3,7 @@
 
 #include <QApplication>
 #include <QQmlApplicationEngine>
-#include <QQuickItem>
+#include <QQuickWindow>
 #include "gpbcore.h"
 #include "dnqmlglobal.h"
 
@@ -18,14 +18,14 @@ public:
     void _shutdown();
     void _init();
     QObject* _rootQmlObject();
-    QQuickItem* mainRootWindow();
+    QQuickWindow* mainRootWindow();
     static DNApplication* _app;
 
     GPBCore* core() { return _core; }
 private:
     GPBCore* _core;
     QQmlApplicationEngine* _qmlEngine = nullptr;
-    QQuickItem* _mainRootWindow = nullptr;
+    QQuickWindow* _mainRootWindow = nullptr;
 
 };
 

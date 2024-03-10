@@ -5,12 +5,12 @@ QT += quick gui widgets
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 QT_CONFIG -= no-pkg-config
-CONFIG += link_pkgconfig debug
+CONFIG += console link_pkgconfig debug
 PKGCONFIG = \
     gstreamer-1.0 \
     gstreamer-video-1.0
 
-DEFINES += GST_USE_UNSTABLE_API
+DEFINES += GST_USE_UNSTABLE_API USE_QML
 
 DEFINES += DNAPI_QML
 SOURCES += \
@@ -25,17 +25,18 @@ SOURCES += \
         dnapi/dnvalue.cpp \
         dnapi/sensoritem.cpp \
         dnapi/sensormanager.cpp \
-        dnapi/dnvideomanager.cpp \
+        dnapi/videomanager.cpp \
         dnapi/gpbcore.cpp \
         dnapi/heartbeat.cpp \
         dnapi/networkmanager.cpp \
         dnapi/videoitem_qml.cpp \
         dnapi/device.cpp \
+        dnapi/videomanager.cpp\
 
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = $$PWD/res
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
@@ -59,10 +60,11 @@ HEADERS += \
     dnapi/dnvalue.h \
     dnapi/sensoritem.h \
     dnapi/sensormanager.h \
-    dnapi/dnvideomanager.h \
+    dnapi/videomanager.h \
     dnapi/gpbcore.h \
     dnapi/heartbeat.h \
     dnapi/networkmanager.h \
     dnapi/videoitem_qml.h \
     dnapi/device.h \
     dnapi/QTypes.h
+    dnapi/videomanager.h\

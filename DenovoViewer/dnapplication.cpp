@@ -1,22 +1,24 @@
 ﻿#include <QRunnable>
+#include <gst/gst.h>
 
 #include "dnapplication.h"
-#include "dnvideomanager.h"
+#include "videomanager.h"
 #include "boatmanager.h"
 
 class FinishVideoInitialization : public QRunnable
 {
 public:
-  FinishVideoInitialization(DNVideoManager* manager)
+  FinishVideoInitialization(VideoManager* manager)
       : _manager(manager)
   {}
 
   void run () {
-     // _manager->_initVideo();
+
+     _manager->initVideo();
   }
 
 private:
-  DNVideoManager* _manager;
+  VideoManager* _manager;
 };
 
 static QObject* DNQmlGlobalSingletonFactory(QQmlEngine*, QJSEngine*)
@@ -33,12 +35,20 @@ DNApplication* DNApplication::_app = nullptr;
 DNApplication::DNApplication(int &argc, char *argv[])
     :QApplication (argc, argv)
 {
+
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
     _core = new GPBCore(this, QString("config1"));
     _init();
+    _core->videoManager()->initGstreamer(argc, argv);
     _qmlEngine->load("qrc:/main.qml");
 
+    QQuickWindow* rootWindow = dnApp()->mainRootWindow();
+
+    if (rootWindow) {
+        rootWindow->scheduleRenderJob (new FinishVideoInitialization (_core->videoManager()),
+                QQuickWindow::BeforeSynchronizingStage);
+    }
 
 }
 
@@ -71,10 +81,10 @@ QObject* DNApplication::_rootQmlObject()
     return nullptr;
 }
 
-QQuickItem* DNApplication::mainRootWindow()
+QQuickWindow* DNApplication::mainRootWindow()
 {
     if(!_mainRootWindow) {
-        _mainRootWindow = reinterpret_cast<QQuickItem*>(_rootQmlObject());
+        _mainRootWindow = reinterpret_cast<QQuickWindow*>(_rootQmlObject());
     }
     return _mainRootWindow;
 }
