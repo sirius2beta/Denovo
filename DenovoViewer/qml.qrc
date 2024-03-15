@@ -1,5 +1,9 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file alias="DeNovoViewer/Display/qmldir">ui/DeNovoViewer/Display/qmldir</file>
+        <file alias="DeNovoViewer/Display/VideoView.qml">ui/DeNovoViewer/Display/VideoView.qml</file>
     </qresource>
 </RCC>

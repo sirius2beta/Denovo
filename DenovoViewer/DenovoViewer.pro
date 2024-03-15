@@ -37,6 +37,7 @@ RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/res
+QML_IMPORT_PATH += $$PWD/ui
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
@@ -47,7 +48,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 INCLUDEPATH += \
-    dnapi
+    dnapi \
+
 
 HEADERS += \
     dnapi/dnqmlglobal.h \
