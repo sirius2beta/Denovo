@@ -15,11 +15,9 @@ DEFINES += GST_USE_UNSTABLE_API USE_QML
 
 DEFINES += DNAPI_QML
 SOURCES += \
-        main.cpp\
         dnapi/dnqmlglobal.cpp \
         dnapi/dntypes.cpp \
         dnapi/dnqmlobjectlistmodel.cpp \
-        dnapplication.cpp \
         dnapi/boatitem.cpp \
         dnapi/boatmanager.cpp \
         dnapi/configmanager.cpp \
@@ -33,6 +31,8 @@ SOURCES += \
         dnapi/networkmanager.cpp \
         dnapi/videoitem_qml.cpp \
         dnapi/device.cpp \
+        main.cpp \
+        dnapplication.cpp
 
 RESOURCES += qml.qrc
 
@@ -60,7 +60,6 @@ HEADERS += \
     dnapi/dnvideomanager.h \
     dnapi/dnvideomanager.h \
     dnapi/dnqmlobjectlistmodel.h \
-    dnapplication.h\
     dnapi/boatitem.h \
     dnapi/boatmanager.h \
     dnapi/configmanager.h \
@@ -72,6 +71,7 @@ HEADERS += \
     dnapi/heartbeat.h \
     dnapi/networkmanager.h \
     dnapi/videoitem_qml.h \
-    dnapi/device.h
+    dnapi/device.h \
+    dnapplication.h
 
 
