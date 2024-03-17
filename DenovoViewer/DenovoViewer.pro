@@ -8,16 +8,18 @@ QT_CONFIG -= no-pkg-config
 CONFIG += console link_pkgconfig debug
 PKGCONFIG = \
     gstreamer-1.0 \
-    gstreamer-video-1.0
+    gstreamer-video-1.0 \
+    gstreamer-gl-1.0
 
 DEFINES += GST_USE_UNSTABLE_API USE_QML
 
 DEFINES += DNAPI_QML
 SOURCES += \
-    dnapi/dnqmlglobal.cpp \
-    dnapi/qmlobjectlistmodel.cpp \
-        dnapplication.cpp \
         main.cpp\
+        dnapi/dnqmlglobal.cpp \
+        dnapi/dntypes.cpp \
+        dnapi/dnqmlobjectlistmodel.cpp \
+        dnapplication.cpp \
         dnapi/boatitem.cpp \
         dnapi/boatmanager.cpp \
         dnapi/configmanager.cpp \
@@ -25,15 +27,16 @@ SOURCES += \
         dnapi/dnvalue.cpp \
         dnapi/sensoritem.cpp \
         dnapi/sensormanager.cpp \
-        dnapi/videomanager.cpp \
+        dnapi/dnvideomanager.cpp \
         dnapi/gpbcore.cpp \
         dnapi/heartbeat.cpp \
         dnapi/networkmanager.cpp \
         dnapi/videoitem_qml.cpp \
         dnapi/device.cpp \
-        dnapi/videomanager.cpp\
 
 RESOURCES += qml.qrc
+
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/res
@@ -53,7 +56,10 @@ INCLUDEPATH += \
 
 HEADERS += \
     dnapi/dnqmlglobal.h \
-    dnapi/qmlobjectlistmodel.h \
+    dnapi/dntypes.h \
+    dnapi/dnvideomanager.h \
+    dnapi/dnvideomanager.h \
+    dnapi/dnqmlobjectlistmodel.h \
     dnapplication.h\
     dnapi/boatitem.h \
     dnapi/boatmanager.h \
@@ -62,11 +68,10 @@ HEADERS += \
     dnapi/dnvalue.h \
     dnapi/sensoritem.h \
     dnapi/sensormanager.h \
-    dnapi/videomanager.h \
     dnapi/gpbcore.h \
     dnapi/heartbeat.h \
     dnapi/networkmanager.h \
     dnapi/videoitem_qml.h \
-    dnapi/device.h \
-    dnapi/QTypes.h
-    dnapi/videomanager.h\
+    dnapi/device.h
+
+

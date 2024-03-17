@@ -2,23 +2,22 @@
 #include <gst/gst.h>
 
 #include "dnapplication.h"
-#include "videomanager.h"
+#include "dnvideomanager.h"
 #include "boatmanager.h"
 
 class FinishVideoInitialization : public QRunnable
 {
 public:
-  FinishVideoInitialization(VideoManager* manager)
+  FinishVideoInitialization(DNVideoManager* manager)
       : _manager(manager)
   {}
 
   void run () {
-
      _manager->initVideo();
   }
 
 private:
-  VideoManager* _manager;
+  DNVideoManager* _manager;
 };
 
 static QObject* DNQmlGlobalSingletonFactory(QQmlEngine*, QJSEngine*)

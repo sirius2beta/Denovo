@@ -25,12 +25,6 @@ Window {
         }
     }
 
-    VideoView{
-        anchors.fill:parent
-
-    }
-
-
     ListView {
         id: listview
         width: 200; height: 320
