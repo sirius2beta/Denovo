@@ -4,7 +4,7 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
-#include "gpbcore.h"
+#include "dncore.h"
 #include "dnqmlglobal.h"
 
 
@@ -21,9 +21,9 @@ public:
     QQuickWindow* mainRootWindow();
     static DNApplication* _app;
 
-    GPBCore* core() { return _core; }
+    DNCore* core() { return _core; }
 private:
-    GPBCore* _core;
+    DNCore* _core;
     QQmlApplicationEngine* _qmlEngine = nullptr;
     QQuickWindow* _mainRootWindow = nullptr;
 

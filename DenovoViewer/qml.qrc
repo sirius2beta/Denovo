@@ -4,6 +4,7 @@
     </qresource>
     <qresource prefix="/qml">
         <file alias="DeNovoViewer/Display/qmldir">ui/DeNovoViewer/Display/qmldir</file>
-        <file alias="DeNovoViewer/Display/VideoView.qml">ui/DeNovoViewer/Display/VideoView.qml</file>
+        <file alias="DeNovoViewer/Display/VideoView.qml">ui/VideoView.qml</file>
+        <file alias="DeNovoViewer/Display/SubVideoView.qml">ui/SubVideoView.qml</file>
     </qresource>
 </RCC>

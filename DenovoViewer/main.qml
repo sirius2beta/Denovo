@@ -1,61 +1,62 @@
 ﻿import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 import DeNovoViewer 1.0
 import DeNovoViewer.Boat 1.0
 import DeNovoViewer.Display 1.0
 
-import org.freedesktop.gstreamer.GLVideoItem 1.0
 Window {
-    width: 640
-    height: 480
+    width: 1280
+    height: 720
     visible: true
     title: DeNovoViewer.programName
 
+    Material.theme: Material.Dark
+    Material.accent: Material.Purple
     Rectangle{
-        id: background
-        anchors.fill: parent
-        color: "black"
-        GstGLVideoItem {
-            id: video
-            objectName: "videoContent"
-            anchors.centerIn: parent
-            width: parent.width
-            height: parent.height
-        }
+        color: "#111111"
+        anchors.fill:parent
     }
 
-    ListView {
-        id: listview
-        width: 200; height: 320
-        model:  DeNovoViewer.boatManager.boatListModel
-
-
-        delegate: Rectangle {
-            width: listview.width; height: 25
-
-            Text { text: object.name }
-        }
+    VideoView{
+        id: _centerVideoView
+        anchors.bottom: _bottom.top
+        anchors.top: parent.top
+        anchors.left: _leftTool.right
+        anchors.right: _subVideoView.left
+        anchors.margins: 15
+        _index:0
     }
 
-    ComboBox {
-        id: combobox
-        editable: false
-        model: DeNovoViewer.boatManager.boatListModel
-        displayText: (currentIndex!=-1)?DeNovoViewer.boatManager.boatListModel.get(currentIndex).name:""
-        Connections {
-            function onActivated(index) {
-                console.log("listview index:",combobox.currentIndex)
-            }
-        }
-
-        delegate: ItemDelegate  {
-            width: combobox.width; height: 25
-            Text { text: object.name }
-
-
-            //required property string modelData
-        }
-
+    Rectangle{
+        id: _leftTool
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        color: "#020202"
+        width:80
     }
+
+    SubVideoView{
+        id: _subVideoView
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: _bottom.top
+        anchors.margins: 15
+    }
+
+    Rectangle{
+        id: _bottom
+        anchors.left: _leftTool.right
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.margins: 15
+        radius: 10
+        color: "#333333"
+
+        height:240
+    }
+
+
 }

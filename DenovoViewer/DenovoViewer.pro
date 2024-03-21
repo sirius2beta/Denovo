@@ -1,11 +1,11 @@
-QT += quick gui widgets
+QT += quick gui widgets quickcontrols2
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 QT_CONFIG -= no-pkg-config
-CONFIG += console link_pkgconfig debug
+CONFIG += console link_pkgconfig  debug
 PKGCONFIG = \
     gstreamer-1.0 \
     gstreamer-video-1.0 \
@@ -26,7 +26,7 @@ SOURCES += \
         dnapi/sensoritem.cpp \
         dnapi/sensormanager.cpp \
         dnapi/dnvideomanager.cpp \
-        dnapi/gpbcore.cpp \
+        dnapi/dncore.cpp \
         dnapi/heartbeat.cpp \
         dnapi/networkmanager.cpp \
         dnapi/videoitem_qml.cpp \
@@ -67,7 +67,7 @@ HEADERS += \
     dnapi/dnvalue.h \
     dnapi/sensoritem.h \
     dnapi/sensormanager.h \
-    dnapi/gpbcore.h \
+    dnapi/dncore.h \
     dnapi/heartbeat.h \
     dnapi/networkmanager.h \
     dnapi/videoitem_qml.h \

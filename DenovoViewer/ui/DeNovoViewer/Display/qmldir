@@ -1,3 +1,4 @@
 ﻿Module DenovoViewer.Display
 
 VideoView   1.0 VideoView.qml
+SubVideoView 1.0 SubVideoView.qml
