@@ -83,28 +83,49 @@ Item {
                 height: _videoNo.height
                 font.family: "Segoe UI"
                 text: "Play"
+                onClicked: {
+                    if(videoItem){
+                        videoItem.play()
+                        console.log("play")
+                    }
+                }
 
             }
             ComboBox{
-                id: _videoNo
+                id: _qualityNo
 
                 anchors.right: _playButton.left
                 anchors.bottom: parent.bottom
                 anchors.margins: 5
+                font.family: "Segoe UI"
+                model: videoItem?videoItem.qualityListModel:0
+                Connections{
+                    function onActivated(index) {
+                        videoItem.setFormatNo(index)
+                        console.log("set formatNo:", index)
+                    }
+                }
             }
 
             ComboBox{
-                id: _qualityNo
-                anchors.right: _videoNo.left
+                id: _videoNo
+                anchors.right: _qualityNo.left
                 anchors.bottom: parent.bottom
                 anchors.margins: 5
                 font.family: "Segoe UI"
                 model: videoItem?videoItem.videoNoListModel:0
+                Connections{
+                    function onActivated(index) {
+                        videoItem.setVideoIndex(index)
+                        console.log("set videoIndex: ", index)
+                    }
+                }
+
             }
 
             ComboBox {
                 id: _boatNo
-                anchors.right: _qualityNo.left
+                anchors.right: _videoNo.left
                 anchors.bottom: parent.bottom
                 anchors.margins: 5
                 editable: false
@@ -129,17 +150,12 @@ Item {
                         color: "white"
                         font.family: "Segoe UI"
                     }
-
-
-
                     //required property string modelData
                 }
 
             }
         }
     }
-
-
 
     Component.onCompleted: {
         setIndex(_index)
