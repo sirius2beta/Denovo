@@ -34,6 +34,19 @@ Item {
             width: parent.width
             height: parent.height
         }
+        Item{
+            anchors.fill: parent
+
+            Image {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: 80
+                fillMode: Image.PreserveAspectFit
+                id: _thumbnail2
+                source: "qrc:/res/videoMiddleIndicater.png"
+            }
+        }
+
         Rectangle{
             id: _toggle
             anchors.bottom: _control.top
