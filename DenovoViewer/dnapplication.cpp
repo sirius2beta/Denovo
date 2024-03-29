@@ -45,7 +45,7 @@ DNApplication::DNApplication(int &argc, char *argv[])
     _qmlEngine->load("qrc:/main.qml");
 
     QQuickWindow* rootWindow = dnApp()->mainRootWindow();
-
+    rootWindow->showFullScreen();
     if (rootWindow) {
         rootWindow->scheduleRenderJob (new FinishVideoInitialization (_core->videoManager()),
                 QQuickWindow::BeforeSynchronizingStage);

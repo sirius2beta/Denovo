@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     gst_init (&argc, &argv);
     QQuickStyle::setStyle("Material");
     DNApplication* app = new DNApplication(argc, argv);
+
     QFont fon("Brown", 12);
     app->setFont(fon);
     Q_CHECK_PTR(app);

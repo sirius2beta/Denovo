@@ -8,6 +8,7 @@ import DeNovoViewer.Boat 1.0
 import DeNovoViewer.Display 1.0
 
 Window {
+    id: dnMainWindow
     width: 1280
     height: 720
     visible: true
@@ -15,6 +16,9 @@ Window {
 
     Material.theme: Material.Dark
     Material.accent: Material.Purple
+
+
+
     Rectangle{
         color: "#111111"
         anchors.fill:parent
@@ -133,6 +137,21 @@ Window {
 
 
     }
+    Popup {
+            id: popup
+            x: 100
+            y: 100
+            width: 200
+            height: 300
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+    }
 
+    Item {
+        id: overlay
+        anchors.fill: parent
+
+    }
 
 }

@@ -3,10 +3,62 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Dialogs 1.3
 import DeNovoViewer 1.0
 import DeNovoViewer.Boat 1.0
 
 Item {
+    Component{
+        id: editBoatDialog
+        Popup {
+                id:root
+                width:300
+                height:200
+                parent: Overlay.overlay
+                anchors.centerIn:   parent
+                modal: true
+                focus: true
+                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+                property int boatIndex: 0
+                ColumnLayout{
+                    anchors.fill: parent
+                    anchors.margins: 10
+                    TextField {
+                        id: pipEdit
+                        selectByMouse: true
+                        text: DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).PIP
+                    }
+                    TextField {
+                        id: sipEdit
+                        selectByMouse: true
+                        text: DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).SIP
+                    }
+                    RowLayout{
+                        Button{
+                            text: 'cancel'
+                            onClicked: {
+                                root.close()
+                            }
+                        }
+                        Button{
+                            text: 'accept'
+                            onClicked: {
+                                root.close()
+                            }
+                        }
+                    }
+
+
+                }
+                onClosed: {
+                    Qt.inputMethod.hide()
+                    DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).PIP = pipEdit.text
+                    DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).SIP = sipEdit.text
+                    root.destroy()
+                }
+        }
+    }
+    id: _root
     Layout.preferredWidth: 300
     Layout.fillHeight: true
     Layout.alignment: Qt.AlignLeft
@@ -45,6 +97,8 @@ Item {
             spacing: 3
             delegate: Component{
                 Item{
+                    id: _content
+                    property bool button_visible: false
                     width: boatListView.width
                     anchors.margins: 20
                     height: 65
@@ -94,10 +148,36 @@ Item {
 
 
 
+
                     }
+
                     MouseArea {
+                        propagateComposedEvents: true
                         anchors.fill: parent
-                        onClicked: boatListView.currentIndex = index
+                        onClicked: {
+
+                            boatListView.currentIndex = index
+                            boatListView.focus = true
+                            for(let i = 0; i < boatListView.count; i++){
+                                boatListView.itemAtIndex(i).button_visible = false
+                            }
+
+                            boatListView.currentItem.button_visible = true
+
+                            console.log(boatListView.focus)
+                        }
+
+                    }
+                    Button{
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: button_visible && boatListView.focus
+                        text: 'edit'
+                        font.family: "Segoe UI"
+                        onClicked: {
+                            console.log(boatListView.currentIndex)
+                            editBoatDialog.createObject(dnMainWindow).open()
+                        }
                     }
                 }
             }
@@ -128,3 +208,5 @@ Item {
         }
     }
 }
+
+
