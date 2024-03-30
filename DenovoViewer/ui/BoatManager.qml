@@ -10,52 +10,8 @@ import DeNovoViewer.Boat 1.0
 Item {
     Component{
         id: editBoatDialog
-        Popup {
-                id:root
-                width:300
-                height:200
-                parent: Overlay.overlay
-                anchors.centerIn:   parent
-                modal: true
-                focus: true
-                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-                property int boatIndex: 0
-                ColumnLayout{
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    TextField {
-                        id: pipEdit
-                        selectByMouse: true
-                        text: DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).PIP
-                    }
-                    TextField {
-                        id: sipEdit
-                        selectByMouse: true
-                        text: DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).SIP
-                    }
-                    RowLayout{
-                        Button{
-                            text: 'cancel'
-                            onClicked: {
-                                root.close()
-                            }
-                        }
-                        Button{
-                            text: 'accept'
-                            onClicked: {
-                                root.close()
-                            }
-                        }
-                    }
+        EditBoatDialog{
 
-
-                }
-                onClosed: {
-                    Qt.inputMethod.hide()
-                    DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).PIP = pipEdit.text
-                    DeNovoViewer.boatManager.getBoatbyIndex(boatListView.currentIndex).SIP = sipEdit.text
-                    root.destroy()
-                }
         }
     }
     id: _root

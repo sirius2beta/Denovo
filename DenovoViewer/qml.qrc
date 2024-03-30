@@ -9,6 +9,8 @@
         <file alias="DeNovoViewer/Display/BoatManager.qml">ui/BoatManager.qml</file>
         <file alias="DeNovoViewer/Display/AquaUI.qml">ui/AquaUI.qml</file>
         <file alias="DeNovoViewer/Display/BoatStatusView.qml">ui/BoatStatusView.qml</file>
+        <file alias="DeNovoViewer/Display/DNPopup.qml">ui/DNPopup.qml</file>
+        <file alias="DeNovoViewer/Display/EditBoatDialog.qml">ui/EditBoatDialog.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file alias="boatManager.png">res/boatManager.png</file>

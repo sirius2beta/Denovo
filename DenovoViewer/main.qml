@@ -13,7 +13,7 @@ Window {
     height: 720
     visible: true
     title: DeNovoViewer.programName
-
+    visibility: Window.FullScreen
     Material.theme: Material.Dark
     Material.accent: Material.Purple
 
