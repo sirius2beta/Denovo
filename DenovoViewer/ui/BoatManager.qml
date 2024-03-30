@@ -55,6 +55,8 @@ Item {
                 Item{
                     id: _content
                     property bool button_visible: false
+
+
                     width: boatListView.width
                     anchors.margins: 20
                     height: 65
@@ -74,13 +76,14 @@ Item {
                             Rectangle{
                                 width: 10
                                 height: 10
-                                color: "#5faab1"
+                                color: object.primaryConnected? "#5faab1": "#990000"
                             }
 
                             Text {
 
                                 font.family: "Segoe UI"
                                 color:"white"
+                                font.pointSize: 8
                                 text: object.PIP
                             }
                         }
@@ -91,13 +94,14 @@ Item {
                             Rectangle{
                                 width: 10
                                 height: 10
-                                color: "#5faab1"
+                                color: object.secondaryConnected? "#5faab1": "#990000"
                             }
 
                             Text {
 
                                 font.family: "Segoe UI"
                                 color:"white"
+                                font.pointSize: 8
                                 text: object.SIP
                             }
                         }

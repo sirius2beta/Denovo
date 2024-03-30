@@ -150,6 +150,15 @@ Item {
                         videoItem.setBoatID(DeNovoViewer.boatManager.getIDbyInex(index))
                         console.log("listview index:",_boatNo.currentIndex)
                     }
+
+                }
+                Connections{
+                    target: DeNovoViewer.boatManager
+                    function onBoatAdded() {
+                        if(_boatNo.currentIndex == -1){
+                            _boatNo.currentIndex = 0
+                        }
+                    }
                 }
 
                 delegate: ItemDelegate  {

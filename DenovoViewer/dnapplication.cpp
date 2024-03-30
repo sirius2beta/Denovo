@@ -39,7 +39,7 @@ DNApplication::DNApplication(int &argc, char *argv[])
     QString pluginpath = QCoreApplication::applicationDirPath()+"/gstreamer-plugins";
     qputenv("GST_PLUGIN_PATH", pluginpath.toStdString().c_str());
 
-    //GST_PLUGIN_STATIC_DECLARE(qmlgl);
+    GST_PLUGIN_STATIC_DECLARE(qmlgl);
     gst_init (&argc, &argv);
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
