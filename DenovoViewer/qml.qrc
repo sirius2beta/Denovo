@@ -19,5 +19,6 @@
         <file alias="ecov4.png">res/ecov4.png</file>
         <file alias="topview.png">res/topview.png</file>
         <file alias="videoMiddleIndicater.png">res/videoMiddleIndicater.png</file>
+        <file alias="SensorType.xml">dnapi/res/SensorType.xml</file>
     </qresource>
 </RCC>

@@ -5,7 +5,7 @@ QT += quick gui widgets quickcontrols2
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 QT_CONFIG -= no-pkg-config
-CONFIG += console link_pkgconfig  debug
+CONFIG += console link_pkgconfig
 
 
 
@@ -48,6 +48,7 @@ SOURCES += \
         dnapi/configmanager.cpp \
         dnapi/dnmetadata.cpp \
         dnapi/dnvalue.cpp \
+        dnapi/sensorgroup.cpp \
         dnapi/sensoritem.cpp \
         dnapi/sensormanager.cpp \
         dnapi/dnvideomanager.cpp \
@@ -90,6 +91,7 @@ HEADERS += \
     dnapi/configmanager.h \
     dnapi/dnmetadata.h \
     dnapi/dnvalue.h \
+    dnapi/sensorgroup.h \
     dnapi/sensoritem.h \
     dnapi/sensormanager.h \
     dnapi/dncore.h \

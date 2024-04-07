@@ -52,7 +52,7 @@ Item {
         }
     }
 
-    Layout.preferredWidth: 300
+    Layout.preferredWidth: 500
     Layout.fillHeight: true
     Layout.alignment: Qt.AlignLeft
     Rectangle{
@@ -87,13 +87,13 @@ Item {
                 RowLayout{
 
                     Text {
-                        Layout.preferredWidth: 150
+                        Layout.preferredWidth: 350
                         wrapMode: Text.WordWrap
                         font.family: "Segoe UI"
                         font.pointSize: 10
                         lineHeight: 0.6
                         color:"#b8bbc0"
-                        text: name
+                        text: object.name
                     }
                     Item {
                         Layout.fillWidth: true
@@ -104,7 +104,7 @@ Item {
                         font.family: "Segoe UI"
                         font.pointSize: 12
                         color:"white"
-                        text: number
+                        text: object.displayValue
                     }
                     Item {
                         Layout.preferredWidth: 10
@@ -114,7 +114,7 @@ Item {
                         font.family: "Segoe UI"
                         font.pointSize: 10
                         color:"#b8bbc0"
-                        text: unit
+                        text: object.displayValue
                     }
                 }
             }
@@ -128,7 +128,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.margins: 10
             clip: true
-            model: demoModel
+            model: DeNovoViewer.sensorManager.aquaModel
             delegate: sensorDelegate
 
         }

@@ -111,7 +111,7 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.margins: 5
                 font.family: "Segoe UI"
-                model: videoItem?videoItem.qualityListModel:0
+                model: videoItem?videoItem.formatListStringModel:0
                 Connections{
                     function onActivated(index) {
                         videoItem.setFormatNo(index)

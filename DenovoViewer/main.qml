@@ -3,6 +3,8 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
+import QtLocation 5.6
+import QtPositioning 5.6
 import DeNovoViewer 1.0
 import DeNovoViewer.Boat 1.0
 import DeNovoViewer.Display 1.0
@@ -13,7 +15,7 @@ Window {
     height: 720
     visible: true
     title: DeNovoViewer.programName
-    visibility: Window.FullScreen
+    //visibility: Window.FullScreen
     Material.theme: Material.Dark
     Material.accent: Material.Purple
 
@@ -126,7 +128,26 @@ Window {
             BoatStatusView{
 
             }
+            Item{
+                Layout.preferredWidth: 200
+                Layout.fillHeight: true
+                Plugin {
+                        id: mapPlugin
+                        name: "osm" // "mapboxgl", "esri", ...
+                        // specify plugin parameters if necessary
+                        // PluginParameter {
+                        //     name:
+                        //     value:
+                        // }
+                    }
 
+                Map {
+                    anchors.fill: parent
+                    plugin: mapPlugin
+                    center: QtPositioning.coordinate(59.91, 10.75) // Oslo
+                    zoomLevel: 14
+                }
+            }
 
             Item {
                     Layout.fillWidth: true

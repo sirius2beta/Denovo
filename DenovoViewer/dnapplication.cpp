@@ -5,6 +5,7 @@
 #include "dnvideomanager.h"
 #include "boatmanager.h"
 #include "videoitem_qml.h"
+#include "sensormanager.h"
 
 class FinishVideoInitialization : public QRunnable
 {
@@ -50,7 +51,6 @@ DNApplication::DNApplication(int &argc, char *argv[])
     _qmlEngine->load("qrc:/main.qml");
 
     QQuickWindow* rootWindow = dnApp()->mainRootWindow();
-    rootWindow->showFullScreen();
     if (rootWindow) {
         rootWindow->scheduleRenderJob (new FinishVideoInitialization (_core->videoManager()),
                 QQuickWindow::BeforeSynchronizingStage);
@@ -75,6 +75,7 @@ void DNApplication::_init()
     qmlRegisterUncreatableType<BoatManager>("DeNovoViewer.Boat", 1, 0, "BoatManager",  "reference only");
     qmlRegisterUncreatableType<DNVideoManager>("DeNovoViewer.Boat", 1, 0, "DNVideoManager",  "reference only");
     qmlRegisterUncreatableType<VideoItem>("DeNovoViewer.Boat", 1, 0, "VideoItem",  "reference only");
+    qmlRegisterUncreatableType<SensorManager>("DeNovoViewer.Boat", 1, 0, "SensorManager",  "reference only");
     // Register Qml Singletons
     qmlRegisterSingletonType<DNQmlGlobal>   ("DeNovoViewer", 1, 0, "DeNovoViewer", DNQmlGlobalSingletonFactory);
     qDebug()<<"global init()";
