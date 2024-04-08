@@ -2,7 +2,7 @@
 
 VideoView   1.0 VideoView.qml
 SubVideoView 1.0 SubVideoView.qml
-BoatManager 1.0 BoatManager.qml
+BoatManagerView 1.0 BoatManagerView.qml
 AquaUI 1.0 AquaUI.qml
 BoatStatusView 1.0 BoatStatusView.qml
 DNPopup 1.0 DNPopup.qml

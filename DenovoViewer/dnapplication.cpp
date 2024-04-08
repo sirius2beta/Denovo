@@ -7,6 +7,12 @@
 #include "videoitem_qml.h"
 #include "sensormanager.h"
 
+
+G_BEGIN_DECLS
+    GST_PLUGIN_STATIC_DECLARE(qml6);
+
+G_END_DECLS
+
 class FinishVideoInitialization : public QRunnable
 {
 public:
@@ -40,13 +46,15 @@ DNApplication::DNApplication(int &argc, char *argv[])
     QString pluginpath = QCoreApplication::applicationDirPath()+"/gstreamer-plugins";
     qputenv("GST_PLUGIN_PATH", pluginpath.toStdString().c_str());
 
-    GST_PLUGIN_STATIC_DECLARE(qmlgl);
+    //GST_PLUGIN_STATIC_REGISTER(qml6);
+
     gst_init (&argc, &argv);
+    GST_PLUGIN_STATIC_REGISTER(qml6);
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
     _core = new DNCore(this, QString("config1"));
     _init();
-    _core->videoManager()->initGstreamer(argc, argv);
+    //_core->videoManager()->initGstreamer();
     _qmlEngine->addImportPath("qrc:/qml");
     _qmlEngine->load("qrc:/main.qml");
 

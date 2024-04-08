@@ -7,7 +7,7 @@ import QtLocation 5.6
 import QtPositioning 5.6
 import DeNovoViewer 1.0
 import DeNovoViewer.Boat 1.0
-import DeNovoViewer.Display 1.0
+import DeNovoViewer.Display
 
 Window {
     id: dnMainWindow
@@ -92,7 +92,7 @@ Window {
             anchors.fill: parent
             anchors.margins:10
             spacing: 10
-            BoatManager{
+            BoatManagerView{
                 id: _boatManager
             }
             Item{
@@ -121,9 +121,9 @@ Window {
                     }
                 }
             }
-            AquaUI{
+            //AquaUI{
 
-            }
+            //}
 
             BoatStatusView{
 

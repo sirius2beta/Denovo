@@ -6,7 +6,7 @@ import QtQuick.Controls.Material 2.15
 import DeNovoViewer 1.0
 import DeNovoViewer.Boat 1.0
 
-import org.freedesktop.gstreamer.GLVideoItem 1.0
+import org.freedesktop.gstreamer.GLVideoItem
 
 Item {
     Material.theme: Material.Dark
@@ -30,9 +30,7 @@ Item {
         GstGLVideoItem {
             id: video
             objectName: "videoContent"
-            anchors.centerIn: parent
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
         }
         Item{
             anchors.fill: parent
