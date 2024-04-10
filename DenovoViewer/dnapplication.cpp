@@ -4,22 +4,25 @@
 #include "dnapplication.h"
 #include "dnvideomanager.h"
 #include "boatmanager.h"
-#include "videoitem_qml.h"
+#include "videoitem.h"
 #include "sensormanager.h"
+G_BEGIN_DECLS
+    GST_PLUGIN_STATIC_DECLARE(qmlgl);
 
+G_END_DECLS
 class FinishVideoInitialization : public QRunnable
 {
 public:
   FinishVideoInitialization(DNVideoManager* manager)
-      : _manager(manager)
+      : _DNmanager(manager)
   {}
 
   void run () {
-     _manager->initVideo();
+     _DNmanager->initVideo();
   }
 
 private:
-  DNVideoManager* _manager;
+  DNVideoManager* _DNmanager;
 };
 
 static QObject* DNQmlGlobalSingletonFactory(QQmlEngine*, QJSEngine*)
@@ -40,13 +43,14 @@ DNApplication::DNApplication(int &argc, char *argv[])
     QString pluginpath = QCoreApplication::applicationDirPath()+"/gstreamer-plugins";
     qputenv("GST_PLUGIN_PATH", pluginpath.toStdString().c_str());
 
-    GST_PLUGIN_STATIC_DECLARE(qmlgl);
+
     gst_init (&argc, &argv);
+    GST_PLUGIN_STATIC_REGISTER(qmlgl);
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
     _core = new DNCore(this, QString("config1"));
     _init();
-    _core->videoManager()->initGstreamer(argc, argv);
+    _core->videoManager()->initGstreamer();
     _qmlEngine->addImportPath("qrc:/qml");
     _qmlEngine->load("qrc:/main.qml");
 
