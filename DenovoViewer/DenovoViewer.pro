@@ -6,9 +6,13 @@ QT += quick gui widgets quickcontrols2 location
 
 CONFIG += console
 
+HEADERS += \
+    dnapplication.h \
+
 SOURCES += \
     main.cpp \
     dnapplication.cpp
+
 include(dnapi/DNCommon.pri) #export to QGC
 
 include(dnapi/QtQml.pri)
