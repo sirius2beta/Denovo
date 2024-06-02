@@ -6,6 +6,9 @@
 #include "boatmanager.h"
 #include "videoitem.h"
 #include "sensormanager.h"
+#include "controlmanager.h"
+#include "controlitem.h"
+#include "dnvalue.h"
 G_BEGIN_DECLS
     GST_PLUGIN_STATIC_DECLARE(qmlgl);
 
@@ -80,8 +83,11 @@ void DNApplication::_init()
     qmlRegisterUncreatableType<DNVideoManager>("DeNovoViewer.Boat", 1, 0, "DNVideoManager",  "reference only");
     qmlRegisterUncreatableType<VideoItem>("DeNovoViewer.Boat", 1, 0, "VideoItem",  "reference only");
     qmlRegisterUncreatableType<SensorManager>("DeNovoViewer.Boat", 1, 0, "SensorManager",  "reference only");
+    qmlRegisterUncreatableType<ControlManager>("DeNovoViewer.Boat", 1, 0, "ControlManager", "reference only");
+    qmlRegisterUncreatableType<ControlItem>("DeNovoViewer.Boat", 1, 0, "ControlItem", "reference only");
+    qmlRegisterType<DNValue>("DeNovoViewer.Boat", 1, 0, "DNValue");
     // Register Qml Singletons
-    qmlRegisterSingletonType<DNQmlGlobal>   ("DeNovoViewer", 1, 0, "DeNovoViewer", DNQmlGlobalSingletonFactory);
+    qmlRegisterSingletonType<DNQmlGlobal>("DeNovoViewer", 1, 0, "DeNovoViewer", DNQmlGlobalSingletonFactory);
     qDebug()<<"global init()";
 
 
