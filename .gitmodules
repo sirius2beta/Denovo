@@ -1,3 +1,6 @@
 [submodule "DenovoViewer/dnapi"]
 	path = DenovoViewer/dnapi
 	url = https://github.com/sirius2beta/dnapi.git
+[submodule "DenovoViewer/DenovoUI"]
+	path = DenovoViewer/DenovoUI
+	url = https://github.com/sirius2beta/DenovoUI.git
