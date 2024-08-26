@@ -56,7 +56,7 @@ DNApplication::DNApplication(int &argc, char *argv[])
     _core->videoManager()->initGstreamer();
     _qmlEngine->addImportPath("qrc:/imports");
     _qmlEngine->addImportPath("qrc:/qml");
-    _qmlEngine->load("qrc:/main2.qml");
+    _qmlEngine->load("qrc:/main.qml");
 
     QQuickWindow* rootWindow = dnApp()->mainRootWindow();
     if (rootWindow) {
