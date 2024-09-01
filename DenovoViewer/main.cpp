@@ -9,10 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-
-
-
-
     QQuickStyle::setStyle("Material");
     DNApplication* app = new DNApplication(argc, argv);
 
@@ -26,5 +22,4 @@ int main(int argc, char *argv[])
     delete app;
     gst_deinit();
     return exitcode;
-
 }

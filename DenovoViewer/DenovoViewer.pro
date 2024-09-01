@@ -1,4 +1,4 @@
-QT += quick gui widgets quickcontrols2 location
+QT += quick gui widgets quickcontrols2 location multimedia
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
