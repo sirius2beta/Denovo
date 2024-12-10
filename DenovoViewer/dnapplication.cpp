@@ -17,23 +17,22 @@ class FinishVideoInitialization : public QRunnable
 {
 public:
   FinishVideoInitialization(DNVideoManager* manager)
-      : _DNmanager(manager)
-  {}
+      : _dnvideomanager(manager)
+  {
+  }
 
   void run () {
-     _DNmanager->initVideo();
+     _dnvideomanager->initVideo();
   }
 
 private:
-  DNVideoManager* _DNmanager;
+  DNVideoManager* _dnvideomanager;
 };
 
+//register a singleton type provider
 static QObject* DNQmlGlobalSingletonFactory(QQmlEngine*, QJSEngine*)
 {
-
-    // We create this object as a QGCTool even though it isn't in the toolbox
     DNQmlGlobal* qmlGlobal = new DNQmlGlobal(dnApp(), dnApp()->core());
-
     return qmlGlobal;
 }
 
@@ -52,6 +51,7 @@ DNApplication::DNApplication(int &argc, char *argv[])
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
     _core = new DNCore(this, QString("config1"));
+    // register C++ class of DNcore
     _init();
     _core->videoManager()->initGstreamer();
     _qmlEngine->addImportPath("qrc:/imports");
@@ -87,6 +87,7 @@ void DNApplication::_init()
     qmlRegisterUncreatableType<ControlManager>("DeNovoViewer.Boat", 1, 0, "ControlManager", "reference only");
     qmlRegisterUncreatableType<ControlItem>("DeNovoViewer.Boat", 1, 0, "ControlItem", "reference only");
     qmlRegisterType<DNValue>("DeNovoViewer.Boat", 1, 0, "DNValue");
+
     // Register Qml Singletons
     qmlRegisterSingletonType<DNQmlGlobal>("DeNovoViewer", 1, 0, "DeNovoViewer", DNQmlGlobalSingletonFactory);
     qDebug()<<"global init()";
