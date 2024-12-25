@@ -13,7 +13,7 @@ SOURCES += \
     main.cpp \
     dnapplication.cpp
 
-include(dnapi/DNCommon.pri) #export to QGC
+include(DNCommon.pri) #export to QGC
 
 include(dnapi/QtQml.pri)
 
