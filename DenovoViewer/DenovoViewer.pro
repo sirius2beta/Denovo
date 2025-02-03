@@ -11,7 +11,8 @@ HEADERS += \
 
 SOURCES += \
     main.cpp \
-    dnapplication.cpp
+    dnapplication.cpp \
+
 
 include(DNCommon.pri) #export to QGC
 

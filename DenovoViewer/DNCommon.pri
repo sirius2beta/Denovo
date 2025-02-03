@@ -2,6 +2,9 @@ INCLUDEPATH += \
     dnapi \
 
 SOURCES += \
+    $$PWD/dnapi/missionitem.cpp \
+    $$PWD/dnapi/parameteritem.cpp \
+    $$PWD/dnapi/parametermanager.cpp \
     dnapi/controlitem.cpp \
     dnapi/controlmanager.cpp \
     dnapi/dncontrol.cpp \
@@ -21,10 +24,14 @@ SOURCES += \
     dnapi/networkmanager.cpp \
     dnapi/device.cpp \
     dnapi/videoitem.cpp \
-    dnapi/winchcontrol.cpp
+    dnapi/winchcontrol.cpp \
+    dnapi/missionmanager.cpp
 
 
 HEADERS += \
+    $$PWD/dnapi/missionitem.h \
+    $$PWD/dnapi/parameteritem.h \
+    $$PWD/dnapi/parametermanager.h \
     dnapi/controlitem.h \
     dnapi/controlmanager.h \
     dnapi/dncontrol.h \
@@ -45,7 +52,8 @@ HEADERS += \
     dnapi/networkmanager.h \
     dnapi/device.h \
     dnapi/videoitem.h \
-    dnapi/winchcontrol.h
+    dnapi/winchcontrol.h \
+    dnapi/missionmanager.h
 
 RESOURCES += \
     dnapi/DeNovo.qrc \
