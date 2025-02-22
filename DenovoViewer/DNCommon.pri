@@ -5,6 +5,7 @@ SOURCES += \
     $$PWD/dnapi/missionitem.cpp \
     $$PWD/dnapi/parameteritem.cpp \
     $$PWD/dnapi/parametermanager.cpp \
+    $$PWD/dnapi/sonarcontrol.cpp \
     dnapi/controlitem.cpp \
     dnapi/controlmanager.cpp \
     dnapi/dncontrol.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     $$PWD/dnapi/missionitem.h \
     $$PWD/dnapi/parameteritem.h \
     $$PWD/dnapi/parametermanager.h \
+    $$PWD/dnapi/sonarcontrol.h \
     dnapi/controlitem.h \
     dnapi/controlmanager.h \
     dnapi/dncontrol.h \
