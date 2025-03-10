@@ -2,15 +2,15 @@
 #include <gst/gst.h>
 
 #include "dnapplication.h"
-#include "dnvideomanager.h"
-#include "boatmanager.h"
-#include "videoitem.h"
-#include "sensormanager.h"
-#include "controlmanager.h"
-#include "controlitem.h"
-#include "dnvalue.h"
+#include "dnapi/dnvideomanager.h"
+#include "dnapi/boatmanager.h"
+#include "dnapi/videoitem.h"
+#include "dnapi/sensormanager.h"
+#include "dnapi/controlmanager.h"
+#include "dnapi/controlitem.h"
+#include "dnapi/dnvalue.h"
 G_BEGIN_DECLS
-    GST_PLUGIN_STATIC_DECLARE(qmlgl);
+    GST_PLUGIN_STATIC_DECLARE(qml6);
 
 G_END_DECLS
 class FinishVideoInitialization : public QRunnable
@@ -42,18 +42,22 @@ DNApplication::DNApplication(int &argc, char *argv[])
     :QApplication (argc, argv)
 {
 
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
+
     QString pluginpath = QCoreApplication::applicationDirPath()+"/gstreamer-plugins";
     qputenv("GST_PLUGIN_PATH", pluginpath.toStdString().c_str());
 
 
     gst_init (&argc, &argv);
-    GST_PLUGIN_STATIC_REGISTER(qmlgl);
+    GST_PLUGIN_STATIC_REGISTER(qml6);
     _app = this;
     _qmlEngine = new QQmlApplicationEngine(this);
+
     _core = new DNCore(this, QString("config1"));
     // register C++ class of DNcore
     _init();
     _core->videoManager()->initGstreamer();
+
     _qmlEngine->addImportPath("qrc:/imports");
     _qmlEngine->addImportPath("qrc:/qml");
     _qmlEngine->load("qrc:/main.qml");
@@ -63,6 +67,7 @@ DNApplication::DNApplication(int &argc, char *argv[])
         rootWindow->scheduleRenderJob (new FinishVideoInitialization (_core->videoManager()),
                 QQuickWindow::BeforeSynchronizingStage);
     }
+
 
 }
 

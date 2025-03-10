@@ -4,8 +4,8 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
-#include "dncore.h"
-#include "dnqmlglobal.h"
+#include "dnapi/dncore.h"
+#include "dnapi/dnqmlglobal.h"
 
 
 

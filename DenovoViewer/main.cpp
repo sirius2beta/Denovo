@@ -2,10 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
 #include <gst/gst.h>
-#include <QQuickStyle>
 #include <QDebug>
 #include "dnapplication.h"
-#include "boatitem.h"
 
 int main(int argc, char *argv[])
 {
